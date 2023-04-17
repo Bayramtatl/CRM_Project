@@ -1,0 +1,37 @@
+﻿@model CRM_Project.Core.Entities.Service
+@{
+  ViewData["Title"] = "Bilgi";
+  Layout = "_Layout2";
+}
+<h2 class="mt-2">Hizmet Detayı</h2>
+<hr />
+<div class="card mt-2">
+  <div class="card-header fw-bold"><span class="float-start text-primary">Talepleriniz</span><span class="float-end text-secondary">Geri Dönüşler</span></div>
+  <div class="card-body">
+
+    @foreach (var step in Model.ServiceSteps)
+    {
+        <div class="row">
+      @if (step.StaffId == 2)
+      {
+        <div class="alert alert-primary my-3 col-md-5 float-start">
+          @step.Description
+        </div>
+      }
+      else
+      {
+          <div class="alert my-3 col-md-7 float-start">
+            
+          </div>
+        <div class="alert alert-secondary my-3 col-md-5 float-end text-center">
+          @step.Description
+        </div>
+      }
+        </div>
+    }
+      
+  </div>
+</div>
+<div>
+  <a href="javascript:history.back()">Geri Dön</a>
+</div>

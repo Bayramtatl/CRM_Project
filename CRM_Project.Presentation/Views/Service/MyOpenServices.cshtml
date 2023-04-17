@@ -1,0 +1,83 @@
+﻿@model IEnumerable<CRM_Project.Core.Entities.Service>
+@{
+  ViewData["Title"] = "Create";
+  Layout = "_Layout2";
+}
+<h2 class="mt-2">Talep Gönder</h2>
+<hr />
+<div class="card mt-2">
+  <div class="card-header fw-bold">Talep</div>
+  <div class="card-body">
+    <table class="table" id="datatablesSimple">
+      <thead>
+        <tr>
+          <th>
+            @Html.DisplayNameFor(model => model.ServiceStatus)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.Request)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.Company.CompanyName)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.UpdatedDate)
+          </th>
+          <th></th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th>
+            @Html.DisplayNameFor(model => model.ServiceStatus)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.Request)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.Company.CompanyName)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.UpdatedDate)
+          </th>
+          <th>    </th>
+      </tfoot>
+      <tbody>
+        @foreach (var item in Model)
+        {
+          <tr>
+            <td>
+              @if (item.ServiceStatus == CRM_Project.Core.Enums.ServiceStatus.Yeni_Gelen)
+              {
+                <span>Teslim Edildi</span>
+              }
+              @if (item.ServiceStatus == CRM_Project.Core.Enums.ServiceStatus.Devam_Eden)
+              {
+                <span>Devam Ediyor</span>
+              }
+              @if (item.ServiceStatus == CRM_Project.Core.Enums.ServiceStatus.Kapatılmış)
+              {
+                <span>Tamamlanmış</span>
+              }
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.Request)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.Company.CompanyName)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.UpdatedDate.Date)
+            </td>
+            <td>
+              <a asp-action="Info" asp-route-id="@item.Id" class="btn btn-warning">Detaylı Bilgi</a>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+<div>
+  <a href="javascript:history.back()">Geri Dön</a>
+</div>

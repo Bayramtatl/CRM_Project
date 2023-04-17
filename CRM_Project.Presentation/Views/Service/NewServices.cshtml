@@ -1,0 +1,73 @@
+﻿@model IEnumerable<CRM_Project.Core.Entities.Service>
+
+@{
+  ViewData["Title"] = "NewServices";
+}
+
+<h2 class="mt-2">Yeni Gelen Hizmetler</h2>
+<hr />
+<div class="card mb-4">
+  <div class="card-header">
+    <i class="fas fa-table me-1"></i>
+    Servis Tablosu
+  </div>
+  <div class="card-body">
+    <table id="datatablesSimple">
+      <thead>
+        <tr>
+          <th>
+            @Html.DisplayNameFor(model => model.ServiceStatus)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.Request)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.Company.CompanyName)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.UpdatedDate)
+          </th>
+          <th><a asp-action="Create" class="btn btn-warning mb-1 px-4">Yeni Hizmet Aç</a></th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th>
+            @Html.DisplayNameFor(model => model.ServiceStatus)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.Request)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.Company.CompanyName)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.UpdatedDate)
+          </th>
+          <th>    </th>
+      </tfoot>
+      <tbody>
+        @foreach (var item in Model)
+        {
+          <tr>
+            <td>
+              @Html.DisplayFor(modelItem => item.ServiceStatus)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.Request)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.Company.CompanyName)
+            </td>
+            <td>
+              @item.UpdatedDate.ToShortDateString()
+            </td>
+            <td>
+              <a asp-controller="ServiceStep" asp-action="CreateByAdmin" asp-route-id="@item.Id" class="btn btn-success">Servis Adımı Ekle</a>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

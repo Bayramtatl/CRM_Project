@@ -1,0 +1,51 @@
+﻿@using CRM_Project.Core.Enums;
+@model CRM_Project.Core.Entities.ServiceStep
+
+@{
+  ViewData["Title"] = "CreateByAdmin";
+}
+<h2>Servis Adımı Ekle</h2>
+<hr />
+<div class="card mb-4">
+  <div class="card-header">
+    <i class="fas fa-table me-1"></i>
+    Servis Adımı
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-4">
+        <form asp-action="CreateByAdmin">
+          <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+          <input type="hidden" asp-for="Id" value="0" />
+          <input type="hidden" asp-for="ServiceId" value="@ViewBag.ServiceId" />
+          <div class="form-group">
+            <label asp-for="ServiceType" class="control-label"></label>
+            <select asp-for="ServiceType" asp-items="Html.GetEnumSelectList<ServiceType>()" class="form-control"></select>
+            <span asp-validation-for="ServiceType" class="text-danger"></span>
+          </div>
+          <div class="form-group">
+            <label asp-for="Description" class="control-label"></label>
+            <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+          </div>
+          <div class="form-group">
+            <label asp-for="Price" class="control-label"></label>
+            <input asp-for="Price" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <a href="javascript:history.back()">Geri Dön</a>
+</div>
+@section Scripts {
+  @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+  }
+  }

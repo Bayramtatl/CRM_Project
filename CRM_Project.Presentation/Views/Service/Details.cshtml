@@ -1,0 +1,69 @@
+﻿@model CRM_Project.Core.Entities.Service
+
+@{
+  ViewData["Title"] = "Details";
+}
+<h2 class="mt-2">Servis Detayları</h2>
+<hr />
+<div class="card mb-4">
+  <div class="card-header"> Servis Talebi</div>
+  <div class="card-body">
+    <table id="datatablesSimple" class="datatable">
+      <thead>
+        <tr>
+          <th>
+            Servis Tipi
+          </th>
+          <th>
+            Açıklama
+          </th>
+          <th>
+            İlgili Personel
+          </th>
+          <th>
+            Harcanan Para
+          </th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th>
+            Servis Tipi
+          </th>
+          <th>
+            Açıklama
+          </th>
+          <th>
+            İlgili Personel
+          </th>
+          <th>
+            Harcanan Para
+          </th>
+        </tr>
+      </tfoot>
+      <tbody>
+
+        @foreach (var steps in Model.ServiceSteps)
+        {
+          <tr>
+            <td>
+              @steps.ServiceType
+            </td>
+            <td>
+              @steps.Description
+            </td>
+            <td>
+              @steps.Staff.FullName
+            </td>
+            <td>
+              @steps.Price
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <a href="javascript:history.back()">Geri Dön</a>
+  </div>
+</div>

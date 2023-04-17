@@ -1,0 +1,71 @@
+﻿@model IEnumerable<CRM_Project.Core.Entities.Service>
+@{
+  ViewData["Title"] = "OutgoingServices";
+}
+<h2 class="mt-2">Kapalı Hizmetler</h2>
+<hr/>
+<div class="card mb-4">
+  <div class="card-header">
+    <i class="fas fa-table me-1"></i>
+    Servis Tablosu
+  </div>
+<div class="card-body">
+  <table class="table" id="datatablesSimple">
+    <thead>
+      <tr>
+        <th>
+          @Html.DisplayNameFor(model => model.ServiceStatus)
+        </th>
+        <th>
+          @Html.DisplayNameFor(model => model.Request)
+        </th>
+        <th>
+          @Html.DisplayNameFor(model => model.Company.CompanyName)
+        </th>
+        <th>
+          @Html.DisplayNameFor(model => model.UpdatedDate)
+        </th>
+        <th></th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <th>
+          @Html.DisplayNameFor(model => model.ServiceStatus)
+        </th>
+        <th>
+          @Html.DisplayNameFor(model => model.Request)
+        </th>
+        <th>
+          @Html.DisplayNameFor(model => model.Company.CompanyName)
+        </th>
+        <th>
+          @Html.DisplayNameFor(model => model.UpdatedDate)
+        </th>
+        <th>    </th>
+    </tfoot>
+    <tbody>
+      @foreach (var item in Model)
+      {
+        <tr>
+          <td>
+            @Html.DisplayFor(modelItem => item.ServiceStatus)
+          </td>
+          <td>
+            @Html.DisplayFor(modelItem => item.Request)
+          </td>
+          <td>
+            @Html.DisplayFor(modelItem => item.Company.CompanyName)
+          </td>
+          <td>
+            @item.UpdatedDate.ToShortDateString()
+          </td>
+          <td>
+            <a asp-action="ActivateService" asp-route-id="@item.Id" class="btn btn-success">Hizmeti Tekrar Aç</a>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+</div>
