@@ -29,5 +29,18 @@ namespace CRM_Project.Business.Concrete
       }
       return ServiceSteps;
     }
+    public ServiceStep RateIt(int id, int point)
+    {
+      var serviceStep= _stepRepository.GetById(id);
+      serviceStep.Point = point;
+      _stepRepository.Update(serviceStep);
+      return serviceStep;
+    }
+    public int GetServiceId(int id)
+    {
+      var serviceStep = _stepRepository.GetById(id);
+      int serviceId = serviceStep.ServiceId;
+      return serviceId;
+    }
   }
 }

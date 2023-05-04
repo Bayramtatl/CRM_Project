@@ -2,8 +2,10 @@ using AspNetCoreHero.ToastNotification;
 using AspNetCoreHero.ToastNotification.Extensions;
 using CRM_Project.Business.Abstract;
 using CRM_Project.Business.Concrete;
+using CRM_Project.Core.Entities;
 using CRM_Project.DataAccess.Abstract;
 using CRM_Project.DataAccess.Concrete;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,8 +22,9 @@ builder.Services.AddSingleton<IStaffManager, StaffManager>();
 builder.Services.AddSingleton<IServiceStepManager, ServiceStepManager>();
 // Oturum açma iþlemleri
 builder.Services.AddHttpContextAccessor();
+builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
 builder.Services.AddSession(options => {
-  options.IdleTimeout = TimeSpan.FromMinutes(30);
+  options.IdleTimeout = TimeSpan.FromMinutes(20);
 });
 builder.Services.AddNotyf(config =>
 {

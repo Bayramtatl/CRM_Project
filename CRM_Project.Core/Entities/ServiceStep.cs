@@ -10,6 +10,7 @@ namespace CRM_Project.Core.Entities
     [DisplayName("Hizmet Açıklama")]
     public string Description { get; set; }
     [DisplayName("Gider")]
+    public int Point { get; set; }
     public decimal? Price { get; set; }
     public int ServiceId { get; set; }
     public Service Service { get; set; }

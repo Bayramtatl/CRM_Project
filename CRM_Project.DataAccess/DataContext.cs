@@ -32,6 +32,16 @@ namespace CRM_Project.DataAccess
             Email = "b@c.com",
             Password = "123",
             UpdatedDate = DateTime.Now
+          },
+          new Staff
+          {
+            Id = 3,
+            Name = "Suat",
+            Surname = "Bıçakçı",
+            Role = Core.Enums.Role.Destek,
+            Email = "s@s.com",
+            Password = "123",
+            UpdatedDate = DateTime.Now
           }
       );
       modelBuilder.Entity<Company>().HasData(
@@ -42,16 +52,56 @@ namespace CRM_Project.DataAccess
           Email = "k@k.com",
           Password = "123",
           UpdatedDate = DateTime.Now
+        },
+        new Company
+        {
+          Id = 2,
+          CompanyName = "Uludağ Üniversitesi",
+          Email = "u@u.com",
+          Password = "123",
+          UpdatedDate = DateTime.Now
         }
     );
       modelBuilder.Entity<Service>().HasData(
           new Service
           {
             Id = 1,
-            ServiceStatus = 0,
+            ServiceStatus = Core.Enums.ServiceStatus.Devam_Eden,
             Request = "Deneme için destek talebi",
             CompanyId = 1,
-
+            UpdatedDate = DateTime.Now
+          }
+      );
+      modelBuilder.Entity<ServiceStep>().HasData(
+          new ServiceStep
+          {
+            Id = 1,
+            ServiceId = 1,
+            ServiceType = Core.Enums.ServiceType.Talep,
+            StaffId = 2,
+            Description = "Sunucularımızda ısınma sorunu var.",
+            UpdatedDate = DateTime.Now
+          }
+      );
+      modelBuilder.Entity<ServiceStep>().HasData(
+          new ServiceStep
+          {
+            Id = 2,
+            ServiceId = 1,
+            ServiceType = Core.Enums.ServiceType.Uzaktan,
+            StaffId = 1,
+            Point = 4,
+            Description = "Sunuculara yazılım güncellemesi yapıldı.",
+            UpdatedDate = DateTime.Now
+          },
+          new ServiceStep
+          {
+            Id = 3,
+            ServiceId = 1,
+            ServiceType = Core.Enums.ServiceType.Yerinde,
+            StaffId = 3,
+            Point = 5,
+            Description = "Sunucuların işlemcisi değiştirildi.",
             UpdatedDate = DateTime.Now
           }
       );

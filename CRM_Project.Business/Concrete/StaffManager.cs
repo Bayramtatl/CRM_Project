@@ -15,5 +15,11 @@ namespace CRM_Project.Business.Concrete
     {
       return _staffRepository.LoginCheck(model);
     }
+    public List<Staff> GetStaffList()
+    {
+      var staffList = _staffRepository.GetAll();
+      staffList.RemoveAt(1);
+      return staffList;
+    }
   }
 }

@@ -27,7 +27,7 @@
           <th>
             @Html.DisplayNameFor(model => model.UpdatedDate)
           </th>
-          <th><a asp-action="Create" class="btn btn-warning mb-1 px-4">Yeni Hizmet Aç</a></th>
+          <th><a data-toggle="tooltip" title="Yeni Servis Aç" asp-action="Create" class="btn btn-warning mb-1 px-4"><i class="fa-regular fa-calendar-plus"></i></a></th>
         </tr>
       </thead>
       <tfoot>
@@ -63,7 +63,7 @@
               @item.UpdatedDate.ToShortDateString()
             </td>
             <td>
-              <a asp-controller="ServiceStep" asp-action="CreateByAdmin" asp-route-id="@item.Id" class="btn btn-success">Servis Adımı Ekle</a>
+              <a data-toggle="tooltip" title="Servis Adımı Ekle" asp-controller="ServiceStep" asp-action="CreateByAdmin" asp-route-id="@item.Id" class="btn btn-success"><i class="fa-solid fa-plus"></i> <i class="fa-sharp fa-solid fa-address-book"></i></a>
             </td>
           </tr>
         }

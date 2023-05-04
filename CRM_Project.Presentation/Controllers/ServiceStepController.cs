@@ -51,5 +51,14 @@ namespace CRM_Project.Presentation.Controllers
       return View(List);
     }
 
+    [HttpGet]
+    public IActionResult Rate(int id, int point)
+    {
+      _serviceStepManager.RateIt(id,point);
+      int serviceId = _serviceStepManager.GetServiceId(id);
+      _toastNotification.Success("Puanlama başarılı");
+      return RedirectToAction("Info", "Service", new { id = serviceId });
+    }
+
   }
 }

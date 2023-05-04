@@ -11,25 +11,65 @@
 
     @foreach (var step in Model.ServiceSteps)
     {
-        <div class="row">
-      @if (step.StaffId == 2)
-      {
-        <div class="alert alert-primary my-3 col-md-5 float-start">
-          @step.Description
-        </div>
-      }
-      else
-      {
-          <div class="alert my-3 col-md-7 float-start">
-            
+      <div class="row">
+        @if (step.StaffId == 2)
+        {
+
+          <div class="alert alert-primary my-3 col-md-5 float-start">
+            <span class="border border-secondary mb-1 bg-white float-end text-dark">@step.UpdatedDate</span>
+            <span class=" text-dark float-start">@step.Description</span>
+
           </div>
-        <div class="alert alert-secondary my-3 col-md-5 float-end text-center">
-          @step.Description
-        </div>
-      }
-        </div>
+        }
+        else
+        {
+          <div class="alert my-3 col-md-7 float-start">
+          </div>
+          <div class="alert alert-secondary my-2 col-md-5 float-end text-center">
+            <span class="border border-secondary bg-white float-end pr-5">@step.UpdatedDate <br /></span>
+            <span class="border border-secondary bg-light px-2  float-end text-dark">
+              <span class=" text-success">Ücret: @step.Price</span> <span class="text-danger">Servis Türü : @step.ServiceType</span>
+            </span>
+            <span class=" text-dark float-start">@step.Description</span>
+            @if (step.Point != 0)
+            {
+                if(step.Point == 5){
+                <span class="mt-1 btn btn-sm btn-success float-end">  Puan : @step.Point</span>
+                }
+              else if (step.Point == 4)
+              {
+                <span class="mt-1 btn btn-sm btn-success opacity-75 float-end">  Puan : @step.Point</span>
+              }
+              else if (step.Point == 3)
+              {
+                <span class="mt-1 btn btn-sm btn-warning float-end">  Puan : @step.Point</span>
+              }
+              else if (step.Point == 2)
+              {
+                <span class="mt-1 btn btn-sm btn-danger opacity-75 float-end">  Puan : @step.Point</span>
+              }
+              else if (step.Point == 1)
+              {
+                <span class="mt-1 btn btn-sm btn-danger float-end">  Puan : @step.Point</span>
+              }
+              
+            }
+            else
+            {
+              <span class="mt-1 btn btn-sm fw-bold float-start">
+                Hizmeti Puanla 
+                <a class="btn btn-sm btn-danger" asp-action="Rate" asp-controller="ServiceStep" asp-route-id="@step.Id" asp-route-point="1">1</a>
+                <a class="btn btn-sm btn-danger opacity-75" asp-action="Rate" asp-controller="ServiceStep" asp-route-id="@step.Id" asp-route-point="2">2</a>
+                <a class="btn btn-sm btn-warning" asp-action="Rate" asp-controller="ServiceStep" asp-route-id="@step.Id" asp-route-point="3">3</a>
+                <a class="btn btn-sm btn-success opacity-75" asp-action="Rate" asp-controller="ServiceStep" asp-route-id="@step.Id" asp-route-point="4">4</a>
+                <a class="btn btn-sm btn-success" asp-action="Rate" asp-controller="ServiceStep" asp-route-id="@step.Id" asp-route-point="5">5</a>
+              </span>
+            }
+          </div>
+        }
+      </div>
     }
-      
+
   </div>
 </div>
 <div>

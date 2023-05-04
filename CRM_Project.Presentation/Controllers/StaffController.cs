@@ -44,6 +44,12 @@ namespace CRM_Project.Presentation.Controllers
         return View();
       }
     }
+    [HttpGet]
+    public IActionResult List()
+    {
+      var staffList = _staffManager.GetStaffList();
+      return View(staffList);
+    }
     public ActionResult Create()
     {
       return View();

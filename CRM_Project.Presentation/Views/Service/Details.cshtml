@@ -45,20 +45,41 @@
 
         @foreach (var steps in Model.ServiceSteps)
         {
-          <tr>
-            <td>
-              @steps.ServiceType
-            </td>
-            <td>
-              @steps.Description
-            </td>
-            <td>
-              @steps.Staff.FullName
-            </td>
-            <td>
-              @steps.Price
-            </td>
-          </tr>
+          @if (steps.Staff.Id == 2)
+          {
+            <tr>
+              <td>
+                @steps.ServiceType
+              </td>
+              <td>
+                @steps.Description
+              </td>
+              <td>
+                @steps.Staff.FullName
+              </td>
+              <td>
+                @steps.Price
+              </td>
+            </tr>
+          }
+          else
+          {
+            <tr>
+              <td>
+                @steps.ServiceType
+              </td>
+              <td>
+                @steps.Description
+              </td>
+              <td>
+                @steps.Staff.FullName
+              </td>
+              <td>
+                @steps.Price
+              </td>
+            </tr>
+
+          }
         }
       </tbody>
     </table>

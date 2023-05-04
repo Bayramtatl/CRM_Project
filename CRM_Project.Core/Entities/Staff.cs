@@ -19,8 +19,10 @@ namespace CRM_Project.Core.Entities
 
     [DataType(DataType.Password)]
     public string Password { get; set; }
+    [DisplayName("Performans Puanı")]
+    public double? AvgPoint { get; set; }
     public ICollection<ServiceStep> ServiceSteps { get; set; }
-
+    [DisplayName("Ad-Soyad")]
     [NotMapped]
     public string FullName
     {
