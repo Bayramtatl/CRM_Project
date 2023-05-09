@@ -6,5 +6,6 @@ namespace CRM_Project.Business.Abstract
   {
     public Staff LoginCheck(Staff model);
     public List<Staff> GetStaffList();
+    public Staff GetById(int id);
   }
 }

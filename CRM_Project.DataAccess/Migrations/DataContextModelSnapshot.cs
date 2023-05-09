@@ -59,7 +59,7 @@ namespace CRM_Project.DataAccess.Migrations
                             CompanyName = "Kablonet",
                             Email = "k@k.com",
                             Password = "123",
-                            UpdatedDate = new DateTime(2023, 4, 29, 18, 45, 40, 93, DateTimeKind.Local).AddTicks(8558)
+                            UpdatedDate = new DateTime(2023, 5, 5, 22, 42, 49, 268, DateTimeKind.Local).AddTicks(297)
                         },
                         new
                         {
@@ -67,7 +67,7 @@ namespace CRM_Project.DataAccess.Migrations
                             CompanyName = "Uludağ Üniversitesi",
                             Email = "u@u.com",
                             Password = "123",
-                            UpdatedDate = new DateTime(2023, 4, 29, 18, 45, 40, 93, DateTimeKind.Local).AddTicks(8559)
+                            UpdatedDate = new DateTime(2023, 5, 5, 22, 42, 49, 268, DateTimeKind.Local).AddTicks(298)
                         });
                 });
 
@@ -81,6 +81,12 @@ namespace CRM_Project.DataAccess.Migrations
 
                     b.Property<int>("CompanyId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("LastDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("MoneySpent")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Request")
                         .IsRequired()
@@ -103,9 +109,11 @@ namespace CRM_Project.DataAccess.Migrations
                         {
                             Id = 1,
                             CompanyId = 1,
+                            LastDate = new DateTime(2023, 5, 5, 22, 42, 49, 268, DateTimeKind.Local).AddTicks(313),
+                            MoneySpent = 6100m,
                             Request = "Deneme için destek talebi",
                             ServiceStatus = 1,
-                            UpdatedDate = new DateTime(2023, 4, 29, 18, 45, 40, 93, DateTimeKind.Local).AddTicks(8572)
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -124,7 +132,7 @@ namespace CRM_Project.DataAccess.Migrations
                     b.Property<int>("Point")
                         .HasColumnType("int");
 
-                    b.Property<decimal?>("Price")
+                    b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("ServiceId")
@@ -153,30 +161,33 @@ namespace CRM_Project.DataAccess.Migrations
                             Id = 1,
                             Description = "Sunucularımızda ısınma sorunu var.",
                             Point = 0,
+                            Price = 0m,
                             ServiceId = 1,
                             ServiceType = 2,
                             StaffId = 2,
-                            UpdatedDate = new DateTime(2023, 4, 29, 18, 45, 40, 93, DateTimeKind.Local).AddTicks(8584)
+                            UpdatedDate = new DateTime(2023, 5, 5, 22, 42, 49, 268, DateTimeKind.Local).AddTicks(327)
                         },
                         new
                         {
                             Id = 2,
                             Description = "Sunuculara yazılım güncellemesi yapıldı.",
                             Point = 4,
+                            Price = 100m,
                             ServiceId = 1,
                             ServiceType = 1,
                             StaffId = 1,
-                            UpdatedDate = new DateTime(2023, 4, 29, 18, 45, 40, 93, DateTimeKind.Local).AddTicks(8596)
+                            UpdatedDate = new DateTime(2023, 5, 5, 22, 42, 49, 268, DateTimeKind.Local).AddTicks(338)
                         },
                         new
                         {
                             Id = 3,
                             Description = "Sunucuların işlemcisi değiştirildi.",
                             Point = 5,
+                            Price = 6000m,
                             ServiceId = 1,
                             ServiceType = 0,
                             StaffId = 3,
-                            UpdatedDate = new DateTime(2023, 4, 29, 18, 45, 40, 93, DateTimeKind.Local).AddTicks(8597)
+                            UpdatedDate = new DateTime(2023, 5, 5, 22, 42, 49, 268, DateTimeKind.Local).AddTicks(339)
                         });
                 });
 
@@ -226,7 +237,7 @@ namespace CRM_Project.DataAccess.Migrations
                             Password = "123",
                             Role = 0,
                             Surname = "Tatlı",
-                            UpdatedDate = new DateTime(2023, 4, 29, 18, 45, 40, 93, DateTimeKind.Local).AddTicks(8478)
+                            UpdatedDate = new DateTime(2023, 5, 5, 22, 42, 49, 268, DateTimeKind.Local).AddTicks(214)
                         },
                         new
                         {
@@ -236,7 +247,7 @@ namespace CRM_Project.DataAccess.Migrations
                             Password = "123",
                             Role = 0,
                             Surname = "Talebi",
-                            UpdatedDate = new DateTime(2023, 4, 29, 18, 45, 40, 93, DateTimeKind.Local).AddTicks(8486)
+                            UpdatedDate = new DateTime(2023, 5, 5, 22, 42, 49, 268, DateTimeKind.Local).AddTicks(222)
                         },
                         new
                         {
@@ -246,7 +257,7 @@ namespace CRM_Project.DataAccess.Migrations
                             Password = "123",
                             Role = 1,
                             Surname = "Bıçakçı",
-                            UpdatedDate = new DateTime(2023, 4, 29, 18, 45, 40, 93, DateTimeKind.Local).AddTicks(8488)
+                            UpdatedDate = new DateTime(2023, 5, 5, 22, 42, 49, 268, DateTimeKind.Local).AddTicks(223)
                         });
                 });
 

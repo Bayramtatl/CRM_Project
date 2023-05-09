@@ -39,7 +39,8 @@ namespace CRM_Project.DataAccess.Concrete
     {
       using (var _dataContext = new DataContext())
       {
-        ServiceStep serviceStep = _dataContext.ServiceSteps.Find(id);
+       // ServiceStep serviceStep = _dataContext.ServiceSteps.FirstOrDefault(i=> i.Id == id);
+        var serviceStep= _dataContext.ServiceSteps.Include(i => i.Service).ThenInclude(j=> j.Company).FirstOrDefault(i => i.Id == id);
         return serviceStep;
       }
     }

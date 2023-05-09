@@ -63,19 +63,27 @@
               <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
               Kapanmýþ Talepler
             </a>
-            <div class="sb-sidenav-menu-heading">Firma Ýþlemleri</div>
+            <div class="sb-sidenav-menu-heading">Firma - Personel</div>
             <a class="nav-link collapsed" asp-action="List" asp-controller="Company">
               <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
               Firmalar
               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
             </a>
-
-            <div class="sb-sidenav-menu-heading">Personel Ýþlemleri</div>
             <a class="nav-link" asp-action="List" asp-controller="Staff">
               <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-              Personel Ýþlemleri
+              Personeller
+            </a>
+            <div class="sb-sidenav-menu-heading">Raporlar</div>
+            <a class="nav-link" asp-action="StaffList" asp-controller="Report">
+              <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+              Personel Raporlarý
+            </a>
+            <a class="nav-link" asp-action="CompanyList" asp-controller="Report">
+              <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+              Firma Raporlarý
             </a>
           </div>
+
         </div>
         <div class="sb-sidenav-footer">
           Vatanýný en çok seven, görevini en iyi yapandýr.   <span class="small"> K.Atatürk</span>
@@ -84,7 +92,7 @@
     </div>
     <div id="layoutSidenav_content">
       <main>
-        <div class="container-fluid px-4">         
+        <div class="container-fluid px-4">
           @RenderBody()
         </div>
       </main>

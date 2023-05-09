@@ -22,6 +22,7 @@ namespace CRM_Project.DataAccess.Migrations
                     CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Number = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -40,6 +41,7 @@ namespace CRM_Project.DataAccess.Migrations
                     Role = table.Column<int>(type: "int", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AvgPoint = table.Column<double>(type: "float", nullable: true),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -56,6 +58,8 @@ namespace CRM_Project.DataAccess.Migrations
                     ServiceStatus = table.Column<int>(type: "int", nullable: false),
                     Request = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CompanyId = table.Column<int>(type: "int", nullable: false),
+                    MoneySpent = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    LastDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -77,6 +81,7 @@ namespace CRM_Project.DataAccess.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ServiceType = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Point = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     ServiceId = table.Column<int>(type: "int", nullable: false),
                     StaffId = table.Column<int>(type: "int", nullable: false),
@@ -101,22 +106,37 @@ namespace CRM_Project.DataAccess.Migrations
 
             migrationBuilder.InsertData(
                 table: "Companies",
-                columns: new[] { "Id", "CompanyName", "Email", "Password", "UpdatedDate" },
-                values: new object[] { 1, "Kablonet", "k@k.com", "123", new DateTime(2023, 4, 9, 23, 52, 2, 664, DateTimeKind.Local).AddTicks(4481) });
+                columns: new[] { "Id", "CompanyName", "Email", "Number", "Password", "UpdatedDate" },
+                values: new object[,]
+                {
+                    { 1, "Kablonet", "k@k.com", null, "123", new DateTime(2023, 5, 5, 19, 12, 11, 722, DateTimeKind.Local).AddTicks(4591) },
+                    { 2, "Uludağ Üniversitesi", "u@u.com", null, "123", new DateTime(2023, 5, 5, 19, 12, 11, 722, DateTimeKind.Local).AddTicks(4592) }
+                });
 
             migrationBuilder.InsertData(
                 table: "Staffs",
-                columns: new[] { "Id", "Email", "Name", "Password", "Role", "Surname", "UpdatedDate" },
+                columns: new[] { "Id", "AvgPoint", "Email", "Name", "Password", "Role", "Surname", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { 1, "b@b.com", "Bayram", "123", 0, "Tatlı", new DateTime(2023, 4, 9, 23, 52, 2, 664, DateTimeKind.Local).AddTicks(4380) },
-                    { 2, "b@c.com", "Firma", "123", 0, "Talebi", new DateTime(2023, 4, 9, 23, 52, 2, 664, DateTimeKind.Local).AddTicks(4390) }
+                    { 1, null, "b@b.com", "Bayram", "123", 0, "Tatlı", new DateTime(2023, 5, 5, 19, 12, 11, 722, DateTimeKind.Local).AddTicks(4510) },
+                    { 2, null, "b@c.com", "Firma", "123", 0, "Talebi", new DateTime(2023, 5, 5, 19, 12, 11, 722, DateTimeKind.Local).AddTicks(4519) },
+                    { 3, null, "s@s.com", "Suat", "123", 1, "Bıçakçı", new DateTime(2023, 5, 5, 19, 12, 11, 722, DateTimeKind.Local).AddTicks(4521) }
                 });
 
             migrationBuilder.InsertData(
                 table: "Services",
-                columns: new[] { "Id", "CompanyId", "Request", "ServiceStatus", "UpdatedDate" },
-                values: new object[] { 1, 1, "Deneme için destek talebi", 0, new DateTime(2023, 4, 9, 23, 52, 2, 664, DateTimeKind.Local).AddTicks(4499) });
+                columns: new[] { "Id", "CompanyId", "LastDate", "MoneySpent", "Request", "ServiceStatus", "UpdatedDate" },
+                values: new object[] { 1, 1, new DateTime(2023, 5, 5, 19, 12, 11, 722, DateTimeKind.Local).AddTicks(4607), 6100m, "Deneme için destek talebi", 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+
+            migrationBuilder.InsertData(
+                table: "ServiceSteps",
+                columns: new[] { "Id", "Description", "Point", "Price", "ServiceId", "ServiceType", "StaffId", "UpdatedDate" },
+                values: new object[,]
+                {
+                    { 1, "Sunucularımızda ısınma sorunu var.", 0, 0m, 1, 2, 2, new DateTime(2023, 5, 5, 19, 12, 11, 722, DateTimeKind.Local).AddTicks(4621) },
+                    { 2, "Sunuculara yazılım güncellemesi yapıldı.", 4, 100m, 1, 1, 1, new DateTime(2023, 5, 5, 19, 12, 11, 722, DateTimeKind.Local).AddTicks(4633) },
+                    { 3, "Sunucuların işlemcisi değiştirildi.", 5, 6000m, 1, 0, 3, new DateTime(2023, 5, 5, 19, 12, 11, 722, DateTimeKind.Local).AddTicks(4634) }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Services_CompanyId",

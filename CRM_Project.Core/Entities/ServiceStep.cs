@@ -11,7 +11,7 @@ namespace CRM_Project.Core.Entities
     public string Description { get; set; }
     [DisplayName("Gider")]
     public int Point { get; set; }
-    public decimal? Price { get; set; }
+    public decimal Price { get; set; }
     public int ServiceId { get; set; }
     public Service Service { get; set; }
     public int StaffId { get; set; }

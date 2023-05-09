@@ -21,5 +21,9 @@ namespace CRM_Project.Business.Concrete
       staffList.RemoveAt(1);
       return staffList;
     }
+    public Staff GetById(int id)
+    {
+      return _staffRepository.GetById(id);
+    }
   }
 }

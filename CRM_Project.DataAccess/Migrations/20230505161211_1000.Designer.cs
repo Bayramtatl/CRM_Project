@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CRM_Project.DataAccess.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230414123900_1001")]
-    partial class _1001
+    [Migration("20230505161211_1000")]
+    partial class _1000
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -62,7 +62,15 @@ namespace CRM_Project.DataAccess.Migrations
                             CompanyName = "Kablonet",
                             Email = "k@k.com",
                             Password = "123",
-                            UpdatedDate = new DateTime(2023, 4, 14, 15, 39, 0, 91, DateTimeKind.Local).AddTicks(8462)
+                            UpdatedDate = new DateTime(2023, 5, 5, 19, 12, 11, 722, DateTimeKind.Local).AddTicks(4591)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CompanyName = "Uludağ Üniversitesi",
+                            Email = "u@u.com",
+                            Password = "123",
+                            UpdatedDate = new DateTime(2023, 5, 5, 19, 12, 11, 722, DateTimeKind.Local).AddTicks(4592)
                         });
                 });
 
@@ -76,6 +84,12 @@ namespace CRM_Project.DataAccess.Migrations
 
                     b.Property<int>("CompanyId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("LastDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("MoneySpent")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Request")
                         .IsRequired()
@@ -98,9 +112,11 @@ namespace CRM_Project.DataAccess.Migrations
                         {
                             Id = 1,
                             CompanyId = 1,
+                            LastDate = new DateTime(2023, 5, 5, 19, 12, 11, 722, DateTimeKind.Local).AddTicks(4607),
+                            MoneySpent = 6100m,
                             Request = "Deneme için destek talebi",
-                            ServiceStatus = 0,
-                            UpdatedDate = new DateTime(2023, 4, 14, 15, 39, 0, 91, DateTimeKind.Local).AddTicks(8476)
+                            ServiceStatus = 1,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -115,6 +131,9 @@ namespace CRM_Project.DataAccess.Migrations
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Point")
+                        .HasColumnType("int");
 
                     b.Property<decimal?>("Price")
                         .HasColumnType("decimal(18,2)");
@@ -138,6 +157,41 @@ namespace CRM_Project.DataAccess.Migrations
                     b.HasIndex("StaffId");
 
                     b.ToTable("ServiceSteps");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Sunucularımızda ısınma sorunu var.",
+                            Point = 0,
+                            Price = 0m,
+                            ServiceId = 1,
+                            ServiceType = 2,
+                            StaffId = 2,
+                            UpdatedDate = new DateTime(2023, 5, 5, 19, 12, 11, 722, DateTimeKind.Local).AddTicks(4621)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Sunuculara yazılım güncellemesi yapıldı.",
+                            Point = 4,
+                            Price = 100m,
+                            ServiceId = 1,
+                            ServiceType = 1,
+                            StaffId = 1,
+                            UpdatedDate = new DateTime(2023, 5, 5, 19, 12, 11, 722, DateTimeKind.Local).AddTicks(4633)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Sunucuların işlemcisi değiştirildi.",
+                            Point = 5,
+                            Price = 6000m,
+                            ServiceId = 1,
+                            ServiceType = 0,
+                            StaffId = 3,
+                            UpdatedDate = new DateTime(2023, 5, 5, 19, 12, 11, 722, DateTimeKind.Local).AddTicks(4634)
+                        });
                 });
 
             modelBuilder.Entity("CRM_Project.Core.Entities.Staff", b =>
@@ -147,6 +201,9 @@ namespace CRM_Project.DataAccess.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<double?>("AvgPoint")
+                        .HasColumnType("float");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -183,7 +240,7 @@ namespace CRM_Project.DataAccess.Migrations
                             Password = "123",
                             Role = 0,
                             Surname = "Tatlı",
-                            UpdatedDate = new DateTime(2023, 4, 14, 15, 39, 0, 91, DateTimeKind.Local).AddTicks(8376)
+                            UpdatedDate = new DateTime(2023, 5, 5, 19, 12, 11, 722, DateTimeKind.Local).AddTicks(4510)
                         },
                         new
                         {
@@ -193,7 +250,17 @@ namespace CRM_Project.DataAccess.Migrations
                             Password = "123",
                             Role = 0,
                             Surname = "Talebi",
-                            UpdatedDate = new DateTime(2023, 4, 14, 15, 39, 0, 91, DateTimeKind.Local).AddTicks(8385)
+                            UpdatedDate = new DateTime(2023, 5, 5, 19, 12, 11, 722, DateTimeKind.Local).AddTicks(4519)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Email = "s@s.com",
+                            Name = "Suat",
+                            Password = "123",
+                            Role = 1,
+                            Surname = "Bıçakçı",
+                            UpdatedDate = new DateTime(2023, 5, 5, 19, 12, 11, 722, DateTimeKind.Local).AddTicks(4521)
                         });
                 });
 

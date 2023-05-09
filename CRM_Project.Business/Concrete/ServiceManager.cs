@@ -20,6 +20,11 @@ namespace CRM_Project.Business.Concrete
       _serviceRepository.Add(s);
       // Mail gönderimi burada yapılacak.
     }
+    public List<Service> GetAll()
+    {
+      var serviceList = _serviceRepository.GetAll();
+      return serviceList;
+    }
     public List<Service> GetNewServices()
     {
       List<Service> activeServiceList = new List<Service>();
@@ -75,12 +80,18 @@ namespace CRM_Project.Business.Concrete
     public void Deactivate(int id)
     {
       _serviceRepository.Deactivate(id);
+
     }
     public IEnumerable<Service> GetByServiceId(int id)
     {
       var ServiceList = _serviceRepository.GetAll();
       var companyServices = ServiceList.Where(i=> i.CompanyId== id);
       return companyServices;
+    }
+    public IEnumerable<Service> GetServicesByCompanyAndDate(DateTime firstDate, DateTime lastDate, int CompanyId)
+    {
+      var ServiceList = _serviceRepository.GetAll().Where(i=> i.CompanyId == CompanyId && i.UpdatedDate >= firstDate && i.LastDate <= lastDate).ToList();
+      return ServiceList;
     }
 
   }

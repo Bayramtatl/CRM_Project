@@ -17,7 +17,10 @@ namespace CRM_Project.Core.Entities
     public string Request { get; set; }
     public int CompanyId { get; set; }
     public Company Company { get; set; }
+    public decimal MoneySpent { get; set; }
     public ICollection<ServiceStep> ServiceSteps { get; set; }
+
+    public DateTime LastDate { get; set; }
 
 
   }

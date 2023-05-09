@@ -1,0 +1,37 @@
+﻿@model CRM_Project.Presentation.ViewModels.CompanyRepViewModel
+@{
+  ViewData["Title"] = "Company List";
+}
+<h2 class="mt-2">Firma Bazlı Hizmet Raporları</h2>
+<hr />
+<div class="card mt-2">
+  <div class="card-header fw-bold">Firma Hizmet Sorgusu</div>
+  <div class="card-body">
+    <div class="col-md-4">
+      <form asp-action="CompanyReport" asp-controller="Report">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group m-2">
+          <label class="control-label"> Başlangıç Tarihi Seçiniz</label>
+          <input asp-for="FirstDate" value="@DateTime.Now.ToString("yyyy-MM-dd")" class="form-control" />
+          <span asp-validation-for="FirstDate" class="text-danger"></span>
+        </div>
+        <div class="form-group m-2">
+          <label class="control-label">Bitiş Tarihi Seçiniz</label>
+          <input asp-for="LastDate" value="@DateTime.Now.ToString("yyyy-MM-dd")" class="form-control" />
+          <span asp-validation-for="LastDate" class="text-danger"></span>
+        </div>
+          <div class="form-group m-2">
+          <label class="control-label">Şirket Seçiniz</label>
+          <select asp-for="CompanyId" asp-items="@Model.Companies" class="form-control"></select>
+          <span asp-validation-for="CompanyId" class="text-danger"></span>
+          </div>
+        <div class="form-group m-2">
+          <input type="submit" value="Sorgula" class="btn btn-primary" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div>
+  <a href="javascript:history.back()">Geri Dön</a>
+</div>

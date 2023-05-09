@@ -69,7 +69,9 @@ namespace CRM_Project.DataAccess
             ServiceStatus = Core.Enums.ServiceStatus.Devam_Eden,
             Request = "Deneme için destek talebi",
             CompanyId = 1,
-            UpdatedDate = DateTime.Now
+            MoneySpent= 6100,
+            LastDate= DateTime.Now,
+            UpdatedDate = DateTime.MinValue
           }
       );
       modelBuilder.Entity<ServiceStep>().HasData(
@@ -79,6 +81,8 @@ namespace CRM_Project.DataAccess
             ServiceId = 1,
             ServiceType = Core.Enums.ServiceType.Talep,
             StaffId = 2,
+            Point = 0,
+            Price= 0,
             Description = "Sunucularımızda ısınma sorunu var.",
             UpdatedDate = DateTime.Now
           }
@@ -91,6 +95,7 @@ namespace CRM_Project.DataAccess
             ServiceType = Core.Enums.ServiceType.Uzaktan,
             StaffId = 1,
             Point = 4,
+            Price = 100,
             Description = "Sunuculara yazılım güncellemesi yapıldı.",
             UpdatedDate = DateTime.Now
           },
@@ -101,6 +106,7 @@ namespace CRM_Project.DataAccess
             ServiceType = Core.Enums.ServiceType.Yerinde,
             StaffId = 3,
             Point = 5,
+            Price = 6000,
             Description = "Sunucuların işlemcisi değiştirildi.",
             UpdatedDate = DateTime.Now
           }
