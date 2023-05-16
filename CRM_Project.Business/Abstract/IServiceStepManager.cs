@@ -6,6 +6,7 @@ namespace CRM_Project.Business.Abstract
   {
     public void CreateServiceStepByAdmin(ServiceStep s);
     public List<ServiceStep> GetByServiceId(int id);
+    public List<ServiceStep> GetAll();
     public ServiceStep RateIt(int id, int point);
     public int GetServiceId(int id);
     public List<ServiceStep> GetServiceStepsByStaffAndDate(DateTime d1, DateTime d2,int StaffId);

@@ -31,7 +31,7 @@ namespace CRM_Project.DataAccess.Concrete
     {
       using (var _dataContext = new DataContext())
       {
-        return _dataContext.ServiceSteps.ToList();
+        return _dataContext.ServiceSteps.Include(i=> i.Service).ThenInclude(j=> j.Company).ToList();
       }
     }
 

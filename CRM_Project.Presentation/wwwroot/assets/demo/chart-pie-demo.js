@@ -6,10 +6,12 @@ Chart.defaults.global.defaultFontColor = '#292b2c';
 var ctx = document.getElementById("myPieChart");
 var num = parseFloat(document.getElementById('c1').innerText);
 var num2 = parseFloat(document.getElementById('c2').innerText);
+var label1 = document.getElementById('l1').innerText;
+var label2 = document.getElementById('l2').innerText;
 var myPieChart = new Chart(ctx, {
     type: 'pie',
     data: {
-        labels: ["Tum firmalara yapilan toplam gider", "Secili Firmanin Gideri"],
+        labels: [label1, label2],
         datasets: [{
             data: [num2, num],
             backgroundColor: ['#dc3545', '#28a745'],

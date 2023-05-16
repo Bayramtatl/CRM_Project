@@ -1,5 +1,6 @@
 ﻿using CRM_Project.Core.Entities;
 using CRM_Project.DataAccess.Abstract;
+using Microsoft.EntityFrameworkCore;
 
 namespace CRM_Project.DataAccess.Concrete
 {
@@ -29,7 +30,7 @@ namespace CRM_Project.DataAccess.Concrete
     {
       using (var _dataContext = new DataContext())
       {
-        return _dataContext.Staffs.ToList();
+        return _dataContext.Staffs.Include(i=> i.ServiceSteps).ToList();
       }
     }
 

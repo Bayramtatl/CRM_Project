@@ -4,6 +4,8 @@
 }
 <h2 class="mt-2">Personel Bazlı Hizmet Raporları</h2>
 <hr />
+<div class="row">
+  <div class="col-lg-6 ignoreForPdf">
 <div class="card mt-2">
   <div class="card-header fw-bold">Personel Hizmet Sorgusu</div>
   <div class="card-body">
@@ -27,6 +29,32 @@
     </div>
   </div>
 </div>
+</div>
+<span class="d-none">
+    @foreach(var item in ViewBag.StaffList){
+    <span class="d-none ll1">@item</span>
+    }
+</span>
+<span class="d-none">
+  @foreach (var item in @ViewBag.StaffJobs){
+    <span class="dd1 d-none">@item</span>
+  }
+</span>
+
+  <div class="col-lg-6">
+    <div class="card mb-4">
+      <div class="card-header">
+        <i class="fas fa-chart-bar me-1"></i>
+        Hizmet Personellerinin Görev Aldığı Servis Adımı Grafiği
+        <span class="float-end">
+          <button data-toggle="tooltip" title="Yazdır" id="btnPrint" class="btn btn-outline-secondary ignoreForPdf"><i class="fa-solid fa-print"></i></button>
+        </span>
+      </div>
+      <div class="card-body"><canvas id="myBarChart" width="100" height="50"></canvas></div>
+      <div class="card-footer small text-muted ">@DateTime.Now.ToShortDateString()  @DateTime.Now.ToShortTimeString() Tarihinde Oluşturuldu</div>
+    </div>
+  </div>
+</div>
 <div>
-  <a href="javascript:history.back()">Geri Dön</a>
+  <a class="ignoreForPdf" href="javascript:history.back()">Geri Dön</a>
 </div>

@@ -4,15 +4,25 @@ Chart.defaults.global.defaultFontColor = '#292b2c';
 
 // Bar Chart Example
 var ctx = document.getElementById("myBarChart");
+var qlabels = document.querySelectorAll(".ll1");
+var qdatas = document.querySelectorAll(".dd1");
+var arrlabels = new Array();
+var arrdatas = new Array();
+for (var i = 0; i < qlabels.length;i++) {
+    arrlabels[i] = qlabels[i].innerHTML;
+}
+for (var i = 0; i < qlabels.length; i++) {
+    arrdatas[i] = qdatas[i].innerHTML;
+}
 var myLineChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["January", "February", "March", "April", "May", "June"],
+      labels: arrlabels,
     datasets: [{
-      label: "Revenue",
+      label: "Eklenen Servis Adimi",
       backgroundColor: "rgba(2,117,216,1)",
       borderColor: "rgba(2,117,216,1)",
-      data: [4215, 5312, 6251, 7841, 9821, 14984],
+        data: arrdatas,
     }],
   },
   options: {
@@ -31,7 +41,7 @@ var myLineChart = new Chart(ctx, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 15000,
+          max: 10,
           maxTicksLimit: 5
         },
         gridLines: {

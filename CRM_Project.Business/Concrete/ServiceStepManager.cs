@@ -61,5 +61,9 @@ namespace CRM_Project.Business.Concrete
       }
       return serviceSteps;
     }
+    public List<ServiceStep> GetAll()
+    {
+      return _stepRepository.GetAll();
+    }
   }
 }
