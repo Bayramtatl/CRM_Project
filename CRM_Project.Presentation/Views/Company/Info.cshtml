@@ -1,0 +1,44 @@
+﻿@model CRM_Project.Core.Entities.Company
+@{
+  ViewData["Title"] = "Info";
+}
+<h2 class="mt-2">Firma Bilgilerini Düzenle</h2>
+<hr />
+<div class="card mt-2">
+  <div class="card-header fw-bold">Firma</div>
+  <div class="card-body">
+    <div class="col-md-4">
+      <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+          <label asp-for="CompanyName" class="control-label"></label>
+          <input asp-for="CompanyName" class="form-control" />
+          <span asp-validation-for="CompanyName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+          <label asp-for="Email" class="control-label"></label>
+          <input asp-for="Email" class="form-control" />
+          <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+          <label asp-for="Password" class="control-label"></label>
+          <input asp-for="Password" value="Password" class="form-control" />
+          <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+          <label asp-for="Number" class="control-label"></label>
+          <input asp-for="Number" class="form-control" />
+          <span asp-validation-for="Number" class="text-danger"></span>
+        </div>
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group mt-2">
+          <input type="submit" value="Firmayı Kaydet" class="btn btn-primary" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div>
+  <a href="javascript:history.back()">Geri Dön</a>
+</div>
+

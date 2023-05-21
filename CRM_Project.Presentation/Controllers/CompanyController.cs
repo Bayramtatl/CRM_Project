@@ -69,26 +69,6 @@ namespace CRM_Project.Presentation.Controllers
       }
     }
 
-    // GET: Company/Delete/5
-    public ActionResult Delete(int id)
-    {
-      return View();
-    }
-
-    // POST: Company/Delete/5
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public ActionResult Delete(int id, IFormCollection collection)
-    {
-      try
-      {
-        return RedirectToAction(nameof(Index));
-      }
-      catch
-      {
-        return View();
-      }
-    }
     public IActionResult List()
     {
       var companies = _companyManager.GetAll();
@@ -103,6 +83,38 @@ namespace CRM_Project.Presentation.Controllers
     [HttpPost]
     [ValidateAntiForgeryToken]
     public ActionResult Edit(Company c)
+    {
+      if (ModelState.IsValid)
+      {
+        try
+        {
+          var company = _companyManager.Update(c);
+          _toastNotification.Success("Güncelleme Başarılı");
+          return View();
+        }
+        catch
+        {
+          _toastNotification.Error("Güncelleme Başarısız");
+          return View();
+        }
+      }
+      else
+      {
+        _toastNotification.Error("Eksik veya Hatalı Bilgi Girişi");
+        return View();
+      }
+    }
+
+    [HttpGet]
+    public IActionResult Info(int id)
+    {
+      var company = _companyManager.GetById(id);
+      return View(company);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public ActionResult Info(Company c)
     {
       if (ModelState.IsValid)
       {

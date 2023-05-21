@@ -23,7 +23,7 @@
           <th>
             @Html.DisplayNameFor(model => model.UpdatedDate)
           </th>
-          <th></th>
+          <th>Bilgi</th>
         </tr>
       </thead>
       <tfoot>
@@ -40,7 +40,7 @@
           <th>
             @Html.DisplayNameFor(model => model.UpdatedDate)
           </th>
-          <th>    </th>
+          <th> Bilgi   </th>
       </tfoot>
       <tbody>
         @foreach (var item in Model)
@@ -70,7 +70,7 @@
               @Html.DisplayFor(modelItem => item.UpdatedDate.Date)
             </td>
             <td>
-              <a asp-action="Info" asp-route-id="@item.Id" class="btn btn-warning">Detaylı Bilgi</a>
+              <a asp-action="Info" asp-route-id="@item.Id" class="btn"><i class="fa-solid fa-circle-info fa-bounce" style="color: #0cdfdb;"></i></a>
             </td>
           </tr>
         }

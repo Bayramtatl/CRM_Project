@@ -8,7 +8,7 @@
   <div class="card-header">
     <i class="fas fa-table me-1"></i>
     Firma Tablosu
-    <span class="float-end"><a data-toggle="tooltip" title="Yeni Firma Ekle" asp-action="Create" class="btn btn-outline-primary">Yeni Firma Ekle</a></span>
+    <span class="float-end"><a data-toggle="tooltip" title="Yeni Firma Ekle" asp-action="Create" class="btn btn-sm btn-outline-primary">Yeni Firma Ekle</a></span>
   </div>
   <div class="card-body">
     <table class="table" id="datatablesSimple">
@@ -66,7 +66,7 @@
               @Html.DisplayFor(modelItem => item.UpdatedDate.Date)
             </td>
             <td>
-              <a data-toggle="tooltip" title="Firmayı Düzenle" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-secondary"><i class="fa-regular fa-pen-to-square" style="color: #7d8587;"></i></a>
+              <a data-toggle="tooltip" title="Firmayı Düzenle" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary"><i class="fa-regular fa-pen-to-square" style="color: #7d8587;"></i></a>
             </td>
           </tr>
         }

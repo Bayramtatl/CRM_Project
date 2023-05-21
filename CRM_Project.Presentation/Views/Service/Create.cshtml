@@ -5,10 +5,10 @@
 }
 <h2 class="mt-2">Talep Gönder</h2>
 <hr />
-<div class="card mt-2">
+<div class="card mt-2 col-md-5">
   <div class="card-header fw-bold">Talep</div>
   <div class="card-body">
-    <div class="col-md-4">
+    <div>
       <form asp-action="Create" asp-controller="Service">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
@@ -24,7 +24,7 @@
           <input type="hidden" asp-for="CompanyId" class="form-control" value="@ViewBag.CompanyId">
         </div>
         <div class="form-group mt-2">
-          <input type="submit" value="Create" class="btn btn-primary" />
+          <button type="submit" class="btn btn-outline-success float-end"><i class="fa-solid fa-share-from-square fa-beat" style="color: #80b25c;"></i></button>
         </div>
       </form>
     </div>
