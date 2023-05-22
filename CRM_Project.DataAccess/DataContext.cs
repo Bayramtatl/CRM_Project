@@ -8,7 +8,7 @@ namespace CRM_Project.DataAccess
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
       base.OnConfiguring(optionsBuilder);
-      optionsBuilder.UseSqlServer("Data Source=DESKTOP-J7P6K06; Database=CrmDB;Trusted_Connection=True;TrustServerCertificate=True");
+      optionsBuilder.UseSqlServer("Data Source=DESKTOP-F7C98MR\\SQLEXPRESS; Database=CrmDB;Trusted_Connection=True;TrustServerCertificate=True");
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
