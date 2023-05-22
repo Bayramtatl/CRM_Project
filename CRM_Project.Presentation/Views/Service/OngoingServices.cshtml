@@ -60,13 +60,13 @@
               @Html.DisplayFor(modelItem => item.Company.CompanyName)
             </td>
             <td>
-              @Html.DisplayFor(modelItem => item.UpdatedDate.Date)
+              @item.UpdatedDate.Date.ToShortDateString()
             </td>
             <td>
               <span class="d-none iid">@item.Id</span>
-              <button onclick="pasifYap(@item.Id)" data-toggle="tooltip" title="Servisi Kapat" class="btn btn-danger"><i class="fa-solid fa-toggle-off"></i></button> |
-              <a data-toggle="tooltip" title="Detaylar" asp-action="Details" asp-route-id="@item.Id" class="btn btn-info"><i class="fa-solid fa-circle-info"></i></a> |
-              <a data-toggle="tooltip" title="Servis Adımı Ekle" asp-controller="ServiceStep" asp-action="CreateByAdmin" asp-route-id="@item.Id" class="btn btn-success"><i class="fa-regular fa-calendar-plus"></i></a>
+              <button onclick="pasifYap(@item.Id)" data-toggle="tooltip" title="Servisi Kapat" class="btn btn-sm btn-danger"><i class="fa-solid fa-toggle-off"></i></button>
+              <a data-toggle="tooltip" title="Detaylar" asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info"><i class="fa-solid fa-circle-info"></i></a>
+              <a data-toggle="tooltip" title="Servis Adımı Ekle" asp-controller="ServiceStep" asp-action="CreateByAdmin" asp-route-id="@item.Id" class="btn btn-sm btn-success"><i class="fa-regular fa-calendar-plus"></i></a>
             </td>
           </tr>
         }

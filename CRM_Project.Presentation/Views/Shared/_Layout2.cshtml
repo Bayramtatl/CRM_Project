@@ -60,11 +60,9 @@
               Devam Eden Talepler
             </a>
             <div class="sb-sidenav-menu-heading">Firma İşlemleri</div>
-
-            <div class="sb-sidenav-menu-heading">Servis İşlemleri</div>
-            <a class="nav-link" asp-action="Create" asp-controller="Service">
+            <a class="nav-link" asp-action="Info" asp-route-id="@companySession.Id" asp-controller="Company">
               <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-              Yeni Talep Gönder
+              Firma Bilgileri
             </a>
           </div>
         </div>
