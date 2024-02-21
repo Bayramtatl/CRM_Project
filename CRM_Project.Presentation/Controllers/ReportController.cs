@@ -67,6 +67,7 @@ namespace CRM_Project.Presentation.Controllers
             ViewBag.TotalSpent = allSpent;
             return View(report);
         }
+
         [HttpGet]
         [Auth]
         public IActionResult StaffList()

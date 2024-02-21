@@ -3,6 +3,8 @@ using CRM_Project.Business.Abstract;
 using CRM_Project.Core.Entities;
 using CRM_Project.Presentation.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.Mail;
+using System.Net;
 
 namespace CRM_Project.Presentation.Controllers
 {
@@ -85,8 +87,8 @@ namespace CRM_Project.Presentation.Controllers
     public IActionResult NewServices()
     {
       var serviceList = _serviceManager.GetNewServices();
-      //var services = _context.Services.Where(i => i.ServiceStatus == "Açık").OrderByDescending(i => i.Date).Include(i => i.Company);
-      return View(serviceList);
+            //var services = _context.Services.Where(i => i.ServiceStatus == "Açık").OrderByDescending(i => i.Date).Include(i => i.Company);
+            return View(serviceList);
     }
     public IActionResult Details(int id) {
       var s = _serviceManager.GetById(id);

@@ -10,7 +10,7 @@ using System.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+builder.Services.AddControllersWithViews();
 //builder.Services.AddSingleton<DbContext, DataContext>();
 builder.Services.AddSingleton<ICompanyRepository, CompanyRepository>();
 builder.Services.AddSingleton<IServiceRepository, ServiceRepository>();
@@ -51,6 +51,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Staff}/{action=StaffLogin}/{id?}");
+    pattern: "{controller=Company}/{action=Login}/{id?}");
 
 app.Run();

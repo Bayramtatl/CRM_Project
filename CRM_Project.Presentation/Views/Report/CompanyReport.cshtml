@@ -67,13 +67,19 @@
   </div>
   <span id="c1" class="d-none">@Model.AmountSpent</span>
   <span id="c2" class="d-none">@ViewBag.TotalSpent</span>
-  <span id="l1" class="d-none">Seçili Firmaya Yapılan Gider</span>
-  <span id="l2" class="d-none">Toplam Gider</span>
+  <span id="l1" class="d-none">Toplam gider</span>
+  <span id="l2" class="d-none">Seçili firmaya yapılan gider</span>
 </div>
 <div class="row">
   <div class="col-lg-6">
     <div class="card mb-4">
-      <div class="card-header">Hizmetlerin Toplam Detayı <span class="float-end">@Model.Services.Last().LastDate.Date.ToShortDateString()</span></div>
+      <div class="card-header">Hizmetlerin Toplam Detayı 
+                @if (Model.Services.Any())
+                {
+                    <span class="float-end">
+                        @Model.Services.Last().LastDate.Date.ToShortDateString()</span>
+          }
+          </div>
       <div class="card-body">
         <ul class="list-group">
           <li class="list-group-item">Firma Adı : <span>@Model.Company.CompanyName</span></li>

@@ -2,191 +2,194 @@
 @using Microsoft.AspNetCore.Http
 @inject IHttpContextAccessor HttpContextAccessor
 @{
-  var staffSession = Context.Session.GetObjectFromJson<Staff>("Staff");
+    var staffSession = Context.Session.GetObjectFromJson<Staff>("Staff");
 }
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
-  <title>Crm Sistemi</title>
-  @*    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <link href="~/css/styles.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">*@
-  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-  <link href="~/css/styles.css" rel="stylesheet" />
-  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-  <script>
-    function pasifYap(id) {
-        Swal.fire({
-            title: 'Emin Misin?',
-            text: "Kapatýlan servisler bu listeden silinir!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            cancelButtonText: 'Ýptal',
-            confirmButtonText: 'Evet, servisi kapat!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire(
-                    'Baþarýlý!',
-                    'Servis Kapatýldý.',
-                    'success'
-                )
-                $.ajax({
-                    url: '/Service/DeactivateService?id=' + id, // Append the ID as a query parameter
-                    type: 'GET',
-                    dataType: 'json',
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Crm Sistemi</title>
+    @*    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="~/css/styles.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">*@
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="~/css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <script>
+        function pasifYap(id) {
+            Swal.fire({
+                title: 'Emin Misin?',
+                text: "Kapatýlan servisler bu listeden silinir!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Ýptal',
+                confirmButtonText: 'Evet, servisi kapat!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Baþarýlý!',
+                        'Servis Kapatýldý.',
+                        'success'
+                    )
+                    $.ajax({
+                        url: '/Service/DeactivateService?id=' + id, // Append the ID as a query parameter
+                        type: 'GET',
+                        dataType: 'json',
 
-                });
+                    });
 
-            }
-        });
-        $(document).ajaxStop(function () {
-            setTimeout(function () {
-                window.location.reload();
-            }, 1000);
-        });
-    }
-  </script>
+                }
+            });
+            $(document).ajaxStop(function () {
+                setTimeout(function () {
+                    window.location.reload();
+                }, 1000);
+            });
+        }
+    </script>
 </head>
 <body class="sb-nav-fixed">
-  <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark ignoreForPdf">
-    <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="index.html"><img src="~/assets/img/indir.jpg" alt="DataHouse" class="w-100"></a>
-    <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-    <!-- Navbar Search-->
-    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-      <div class="input-group">
-        <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-        <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-      </div>
-    </form>
-    <!-- Navbar-->
-    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-          <li><a class="dropdown-item" href="#!">Hoþ Geldiniz.</a></li>
-          <li><hr class="dropdown-divider" /></li>
-          <li><a class="dropdown-item" href="#!">Çýkýþ Yap</a></li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
-  <div id="layoutSidenav">
-    <div id="layoutSidenav_nav" class="ignoreForPdf">
-      <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-        <div class="sb-sidenav-menu">
-          <div class="nav">
-            <div class="sb-sidenav-menu-heading">Talep Ýþlemleri</div>
-            <a class="nav-link" asp-action="NewServices" asp-controller="Service">
-              <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-              Açýk Talepler
-            </a>
-            <a class="nav-link" asp-action="OngoingServices" asp-controller="Service">
-              <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-              Devam Eden Talepler
-            </a>
-            <a class="nav-link" asp-action="OutgoingServices" asp-controller="Service">
-              <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-              Kapanmýþ Talepler
-            </a>
-            <div class="sb-sidenav-menu-heading">Firma - Personel</div>
-            <a class="nav-link collapsed" asp-action="List" asp-controller="Company">
-              <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-              Firmalar
-              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-            </a>
-            <a class="nav-link" asp-action="List" asp-controller="Staff">
-              <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-              Personeller
-            </a>
-            <div class="sb-sidenav-menu-heading">Raporlar</div>
-            <a class="nav-link" asp-action="StaffList" asp-controller="Report">
-              <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-              Personel Raporlarý
-            </a>
-            <a class="nav-link" asp-action="CompanyList" asp-controller="Report">
-              <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-              Firma Raporlarý
-            </a>
-          </div>
-
-        </div>
-        <div class="sb-sidenav-footer ignoreForPdf">
-          Vatanýný en çok seven, görevini en iyi yapandýr.   <span class="small"> K.Atatürk</span>
-        </div>
-      </nav>
-    </div>
-    <div id="layoutSidenav_content">
-      <main>
-        <div class="container-fluid px-4">
-          @RenderBody()
-        </div>
-      </main>
-      <footer class="py-4 bg-light mt-auto ignoreForPdf">
-        <div class="container-fluid px-4">
-          <div class="d-flex align-items-center justify-content-between small">
-            <div class="text-muted">Copyright for Jr. Backend Developer Bayram Tatlý ~ 2023</div>
-            <div>
-              <a href="#">Gizlilik Haklarý</a>
-              &middot;
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark ignoreForPdf">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" href="index.html">Personel Paneli</a>
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="Sayfada ara..." aria-label="Sayfada ara..." aria-describedby="btnNavbarSearch" />
+                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
             </div>
-          </div>
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#!">Hoþ Geldiniz.</a></li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" asp-action="StaffLogin" asp-controller="Staff">Çýkýþ Yap</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav" class="ignoreForPdf">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Talep Ýþlemleri</div>
+                        <a class="nav-link" asp-action="NewServices" asp-controller="Service">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Açýk Talepler
+                        </a>
+                        <a class="nav-link" asp-action="OngoingServices" asp-controller="Service">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Devam Eden Talepler
+                        </a>
+                        <a class="nav-link" asp-action="OutgoingServices" asp-controller="Service">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Kapanmýþ Talepler
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Firma - Personel</div>
+                        <a class="nav-link collapsed" asp-action="List" asp-controller="Company">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Firmalar
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        @if (staffSession.Role == CRM_Project.Core.Enums.Role.Mudur)
+                        {
+                            <a class="nav-link" asp-action="List" asp-controller="Staff">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Personeller
+                            </a>
+                            <div class="sb-sidenav-menu-heading">Raporlar</div>
+                            <a class="nav-link" asp-action="StaffList" asp-controller="Report">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Personel Raporlarý
+                            </a>
+                            <a class="nav-link" asp-action="CompanyList" asp-controller="Report">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Firma Raporlarý
+                            </a>
+                        }
+                    </div>
+
+                </div>
+                <div class="sb-sidenav-footer ignoreForPdf">
+                    Vatanýný en çok seven, görevini en iyi yapandýr.   <span class="small"> K.Atatürk</span>
+                </div>
+            </nav>
         </div>
-      </footer>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    @RenderBody()
+                </div>
+            </main>
+            <footer class="py-4 bg-light mt-auto ignoreForPdf">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright for Jr. Backend Developer Bayram Tatlý ~ 2023</div>
+                        <div>
+                            <a href="#">Gizlilik Haklarý</a>
+                            &middot;
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
     </div>
-  </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-  <script src="~/js/scripts.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-  <script src="~/assets/demo/chart-pie-demo.js"></script>
-  <script src="~/assets/demo/chart-bar-demo.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-  <script src="~/js/datatables-simple-demo.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  @await Component.InvokeAsync("Notyf")
-  @await RenderSectionAsync("Scripts", required: false)
-  <script>
-    $(document).ready(function () {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="~/js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="~/assets/demo/chart-pie-demo.js"></script>
+    <script src="~/assets/demo/chart-bar-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+    <script src="~/js/datatables-simple-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @await Component.InvokeAsync("Notyf")
+    @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        $(document).ready(function () {
 
-        $("#btnPrint").click(function () {
-            $(".ignoreForPdf").hide();
-            window.print();
-            $(".ignoreForPdf").show();
+            $("#btnPrint").click(function () {
+                $(".ignoreForPdf").hide();
+                window.print();
+                $(".ignoreForPdf").show();
+            });
         });
-    });
-    //$(document).ready(function () {
-    //    async: false;
-    //    $("#btnPrint").click(function () {
-    //        Swal.fire({
-    //            title: 'Yazdirmak istiyor musun?',
-    //            showDenyButton: true,
-    //            showCancelButton: true,
-    //            confirmButtonText: 'Yazdir',
-    //            denyButtonText: `Yazdirma`,
-    //        }).then((result) => {
-    //            /* Read more about isConfirmed, isDenied below */
-    //            if (result.isConfirmed) {
-    //                Swal.fire('Yazdirildi!', '', 'success');
-    //                $(".ignoreForPdf").hide();
-    //                window.print();
-    //                $(".ignoreForPdf").show();
-    //            } else if (result.isDenied) {
-    //                Swal.fire('Yazdirilmadi', '', 'info')
-    //            }
-    //        })
-    //    });
+            //$(document).ready(function () {
+            //    async: false;
+            //    $("#btnPrint").click(function () {
+            //        Swal.fire({
+            //            title: 'Yazdirmak istiyor musun?',
+            //            showDenyButton: true,
+            //            showCancelButton: true,
+            //            confirmButtonText: 'Yazdir',
+            //            denyButtonText: `Yazdirma`,
+            //        }).then((result) => {
+            //            /* Read more about isConfirmed, isDenied below */
+            //            if (result.isConfirmed) {
+            //                Swal.fire('Yazdirildi!', '', 'success');
+            //                $(".ignoreForPdf").hide();
+            //                window.print();
+            //                $(".ignoreForPdf").show();
+            //            } else if (result.isDenied) {
+            //                Swal.fire('Yazdirilmadi', '', 'info')
+            //            }
+            //        })
+            //    });
 
-    //});
+            //});
 
-  </script>
+    </script>
 </body>
 </html>

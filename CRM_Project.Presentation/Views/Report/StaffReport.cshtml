@@ -54,7 +54,15 @@
               @item.Description
             </td>
             <td>
-              @item.Point
+                            @if (item.Point != 0)
+                            {
+                                @item.Point
+                            }
+                            else
+                            {
+                                <span>Puanlanmadı</span>
+                            }
+
             </td>
             <td>
               @item.Price

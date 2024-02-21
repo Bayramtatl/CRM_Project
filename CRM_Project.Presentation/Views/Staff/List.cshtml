@@ -4,12 +4,12 @@
   ViewData["Title"] = "StaffList";
 }
 
-<h2 class="mt-2">Yeni Gelen Hizmetler</h2>
+<h2 class="mt-2">Personel Listesi</h2>
 <hr />
 <div class="card mb-4">
   <div class="card-header">
     <i class="fas fa-table me-1"></i>
-    Servis Tablosu
+    Personel Tablosu
   </div>
   <div class="card-body">
     <table id="datatablesSimple">
@@ -23,9 +23,6 @@
           </th>
           <th>
             @Html.DisplayNameFor(model => model.Role)
-          </th>
-          <th>
-            @Html.DisplayNameFor(model => model.AvgPoint)
           </th>
           <th>@Html.DisplayNameFor(model => model.Password)</th>
         </tr>
@@ -41,9 +38,6 @@
           <th>
             @Html.DisplayNameFor(model => model.Role)
           </th>
-          <th>
-            @Html.DisplayNameFor(model => model.AvgPoint)
-          </th>
           <th>@Html.DisplayNameFor(model => model.Password)    </th>
       </tfoot>
       <tbody>
@@ -58,9 +52,6 @@
             </td>
             <td>
               @Html.DisplayFor(modelItem => item.Role)
-            </td>
-            <td>
-              @Html.DisplayFor(modelItem => item.AvgPoint)
             </td>
             <td>
               @Html.DisplayFor(modelItem => item.Password)
