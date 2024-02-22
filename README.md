@@ -8,8 +8,7 @@ Bu proje .Net 6.0 ve Sql Server kullanılarak oluşturulmuştur ve müşterileri
 * Datatables
 * Alertify
 * Jquery
-* Javascript - Typescript
-* Angular
+* Javascript
 ### Backend
 * .Net 7.0
 * EntityFramework
