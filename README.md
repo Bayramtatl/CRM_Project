@@ -41,3 +41,34 @@ Sistemde destek firmasının personelleri iki farklı rol ile ayrılmaktadır. B
 # Raporlama Sistemi
 
 Sistemde toplamda 2 farklı rapor dökümü bulunmaktadır. Bunlardan bir tanesi müşteri firmaların dökümünü görüntülemeyi amaçlamaktadır. Rapor aylık ve yıllık bazda seçilen bir firmaya verilmiş tüm hizmeti ve o hizmete harcanan gider ve hizmetlerden gelen toplam gelirin hesaplanarak ilgili firmaya verilen hizmetlerden elde edilen kazancı hesaplamaktadır. Bir diğer rapor ise sistemdeki destek elemanlarının iş süreçlerine ne kadar katıldığını ortaya çıkarmayı hedeflemektedir. Bu raporda seçilen bir personelin belirli bir tarih aralığında sistemdeki aktivitesini eklediği hizmet adımlarını listeleyerek ortaya çıkarmakta ve bu personelin diğer personellere göre yüzdelik bazdaki performans katkısını ortaya koymaktadır.
+
+## Sistemden görseller
+
+# Müşteri Paneli
+
+![image](https://github.com/Bayramtatl/CRM_Project/assets/92461836/382aa054-3111-45f5-ac64-734e4f545253)
+
+![image](https://github.com/Bayramtatl/CRM_Project/assets/92461836/e81f4294-0e5c-47f4-94b8-ec6b8c51fe0d)
+
+![image](https://github.com/Bayramtatl/CRM_Project/assets/92461836/3aca5111-872e-4d92-af45-cc11243eb3c7)
+
+# Personel Paneli
+
+![image](https://github.com/Bayramtatl/CRM_Project/assets/92461836/296f2a8d-f6dc-42de-834c-b0ae960e95c7)
+
+![image](https://github.com/Bayramtatl/CRM_Project/assets/92461836/551e92e8-35fc-48f7-bdf7-724393eb62a1)
+
+![image](https://github.com/Bayramtatl/CRM_Project/assets/92461836/0f519498-8538-4fbc-a1ad-4900d6f7e017)
+
+![image](https://github.com/Bayramtatl/CRM_Project/assets/92461836/82594152-504f-4712-bc35-7cfc1930a9e3)
+
+![image](https://github.com/Bayramtatl/CRM_Project/assets/92461836/6d51a6ad-7ce1-4a95-98fc-df58ec577a0b)
+
+![image](https://github.com/Bayramtatl/CRM_Project/assets/92461836/73017769-04b9-416c-b7a9-978d88ee36ec)
+
+
+
+
+
+
+
